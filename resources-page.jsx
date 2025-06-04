@@ -145,7 +145,6 @@ export default function ResourcesPage() {
                         className="text-lg font-semibold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-2">
                         {resource.title}
                       </h3>
-
                       <p className="text-slate-600 text-sm line-clamp-3 leading-relaxed">{resource.description}</p>
 
                       <div className="flex items-center justify-between text-xs text-slate-500">
