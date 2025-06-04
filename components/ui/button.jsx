@@ -40,25 +40,15 @@ function Button({
   variant,
   size,
   asChild = false,
-  href,
-  download,
   ...props
 }) {
-  const Comp =
-    asChild
-      ? Slot
-      : href || download
-        ? 'a'
-        : 'button';
+  const Comp = asChild ? Slot : "button"
 
   return (
     <Comp
       data-slot="button"
-      href={href}
-      download={download}
       className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
+      {...props} />
   );
 }
 
