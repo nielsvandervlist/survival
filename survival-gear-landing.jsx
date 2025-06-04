@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { TestSupabaseConnection } from "./components/test-supabase-connection"
 import {
   Compass,
   Users,
@@ -17,8 +18,8 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { Header } from "./components/header"
-import { Footer } from "./components/footer"
+import { Header } from "@/components/header"
+import { Footer } from "@/components/footer"
 import { NewsletterSignup } from "./components/newsletter-signup"
 import { useLanguage } from "./contexts/language-context"
 
@@ -29,6 +30,7 @@ export default function Component() {
     <div
       className="flex flex-col min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       <Header currentPage="home" />
+      {/* <TestSupabaseConnection/> */}
       <main className="flex-1">
         {/* Hero Section */}
         <section className="w-full py-20 md:py-32 lg:py-40">

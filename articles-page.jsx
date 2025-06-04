@@ -4,15 +4,15 @@ import { useState, useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Search, Clock, User, Calendar, BookOpen, Filter, ArrowRight } from "lucide-react"
-import Image from "next/image"
-import Link from "next/link"
+import { BookOpen, Filter } from "lucide-react"
 import { Header } from "./components/header"
 import { Footer } from "./components/footer"
+import { ArticleCard } from "./components/ui/article-card"
+import { SearchFilters } from "./components/ui/search-filters"
+import { PageHeader } from "./components/ui/page-header"
+import { EmptyState } from "./components/ui/empty-state"
 
-// Mock articles data with updated images
+// Mock articles data
 const articles = [
   {
     id: 1,
@@ -20,71 +20,8 @@ const articles = [
     slug: "ultimate-72-hour-emergency-kit-checklist",
     excerpt:
       "A comprehensive guide to building the perfect 72-hour emergency kit for your family. Learn what essentials you need to survive the first critical days of any disaster.",
-    content: `When disaster strikes, the first 72 hours are critical. Emergency services may be overwhelmed, and you'll need to be self-sufficient. Here's your complete guide to building a 72-hour emergency kit that could save your life.
-
-## Why 72 Hours?
-
-Emergency management experts recommend preparing for at least 72 hours because:
-- Emergency responders may not reach you immediately
-- Supply chains can be disrupted
-- Infrastructure may be damaged
-- You may need to evacuate quickly
-
-## Essential Categories
-
-### Water and Hydration
-- 1 gallon per person per day (3 gallons total per person)
-- Water purification tablets or portable filters
-- Electrolyte packets for rehydration
-
-### Food and Nutrition
-- Non-perishable, ready-to-eat meals
-- High-energy snacks (nuts, energy bars)
-- Manual can opener
-- Disposable plates, cups, and utensils
-
-### Shelter and Warmth
-- Emergency blankets or sleeping bags
-- Tarps for shelter
-- Duct tape for repairs
-- Warm clothing for each family member
-
-### First Aid and Medical
-- Comprehensive first aid kit
-- Prescription medications (7-day supply)
-- Over-the-counter pain relievers
-- Medical supplies for chronic conditions
-
-### Tools and Equipment
-- Multi-tool or Swiss Army knife
-- Flashlights with extra batteries
-- Battery-powered or hand-crank radio
-- Whistle for signaling help
-- Local maps in waterproof container
-
-### Communication and Documentation
-- Fully charged portable phone chargers
-- Emergency contact list
-- Copies of important documents in waterproof bag
-- Cash in small bills
-
-## Storage and Maintenance
-
-Store your kit in an easily accessible location and check it every six months. Replace expired food, water, and medications. Update documents and contact information as needed.
-
-## Customization Tips
-
-Tailor your kit to your family's specific needs:
-- Infant supplies (formula, diapers, baby food)
-- Pet supplies (food, medications, carriers)
-- Special dietary requirements
-- Climate-specific items
-
-Remember, the best emergency kit is one you've practiced using. Conduct regular drills with your family to ensure everyone knows where the kit is and how to use its contents.`,
     category: "Emergency Preparedness",
     author: "Sarah Mitchell",
-    authorBio:
-      "Emergency preparedness expert with 15 years of experience in disaster response and family safety planning.",
     publishDate: "2024-01-15",
     readTime: 8,
     image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop&crop=center",
@@ -187,6 +124,13 @@ const categories = [
   { name: "Medical Preparedness", count: articles.filter((a) => a.category === "Medical Preparedness").length },
 ]
 
+const sortOptions = [
+  { value: "newest", label: "Newest First" },
+  { value: "oldest", label: "Oldest First" },
+  { value: "reading-time", label: "Reading Time" },
+  { value: "title", label: "Title A-Z" },
+]
+
 export default function ArticlesPage() {
   const [searchTerm, setSearchTerm] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("All Articles")
@@ -234,110 +178,30 @@ export default function ArticlesPage() {
       className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       <Header currentPage="articles" />
       <div className="container mx-auto px-4 max-w-7xl py-12">
-        {/* Page Header */}
-        <div className="text-center mb-16">
-          <h1
-            className="text-5xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-6">
-            Preparedness Knowledge Base
-          </h1>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Expert guides, tips, and strategies for emergency preparedness and survival. Learn from professionals who've
-            been there.
-          </p>
-        </div>
+        <PageHeader
+          title="Preparedness Knowledge Base"
+          subtitle="Expert guides, tips, and strategies for emergency preparedness and survival. Learn from professionals who've been there." />
 
         {/* Featured Articles */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-slate-900 mb-8">Featured Guides</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredArticles.map((article) => (
-              <Card
-                key={article.id}
-                className="bg-white/70 backdrop-blur-sm border-slate-200/50 shadow-xl hover:shadow-2xl transition-all duration-300 group overflow-hidden">
-                <CardHeader className="p-0">
-                  <div className="relative">
-                    <Image
-                      src={article.image || "/placeholder.svg"}
-                      alt={article.title}
-                      width={400}
-                      height={250}
-                      className="w-full h-48 object-cover" />
-                    <Badge
-                      className="absolute top-3 left-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white border-0">
-                      Featured
-                    </Badge>
-                  </div>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4 text-sm text-slate-500">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4" />
-                        {new Date(article.publishDate).toLocaleDateString()}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="h-4 w-4" />
-                        {article.readTime} min read
-                      </span>
-                    </div>
-                    <Badge variant="outline" className="border-slate-300 text-slate-600">
-                      {article.category}
-                    </Badge>
-                    <h3
-                      className="text-xl font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
-                      {article.title}
-                    </h3>
-                    <p className="text-slate-600 line-clamp-3">{article.excerpt}</p>
-                    <div className="flex items-center justify-between pt-2">
-                      <div className="flex items-center gap-2">
-                        <div
-                          className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                          <User className="h-4 w-4 text-white" />
-                        </div>
-                        <span className="text-sm text-slate-600">{article.author}</span>
-                      </div>
-                      <Link href={`/articles/${article.slug}`}>
-                        <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700">
-                          Read More
-                          <ArrowRight className="h-4 w-4 ml-1" />
-                        </Button>
-                      </Link>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+              <ArticleCard key={article.id} article={article} variant="featured" />
             ))}
           </div>
         </section>
 
-        {/* Search and Filters */}
         <div className="mb-12">
-          <div className="flex flex-col md:flex-row gap-4 mb-8">
-            <div className="relative flex-1">
-              <Search
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
-              <Input
-                placeholder="Search articles..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-12 h-12 bg-white border-slate-200 text-slate-900 placeholder:text-slate-500 focus:border-blue-500 focus:ring-blue-500" />
-            </div>
-            <Select value={sortBy} onValueChange={setSortBy}>
-              <SelectTrigger className="w-full md:w-48 h-12 bg-white border-slate-200">
-                <SelectValue placeholder="Sort by" />
-              </SelectTrigger>
-              <SelectContent className="bg-white border-slate-200">
-                <SelectItem value="newest">Newest First</SelectItem>
-                <SelectItem value="oldest">Oldest First</SelectItem>
-                <SelectItem value="reading-time">Reading Time</SelectItem>
-                <SelectItem value="title">Title A-Z</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
+          <SearchFilters
+            searchTerm={searchTerm}
+            onSearchChange={setSearchTerm}
+            sortBy={sortBy}
+            onSortChange={setSortBy}
+            sortOptions={sortOptions} />
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-12">
-          {/* Sidebar */}
+        <div className="flex flex-col gap-12">
           <div className="lg:w-80 space-y-8">
             <Card className="bg-white/70 backdrop-blur-sm border-slate-200/50 shadow-xl">
               <CardHeader>
@@ -394,79 +258,16 @@ export default function ArticlesPage() {
               </p>
             </div>
 
-            <div className="space-y-8">
-              {filteredArticles.map((article) => (
-                <Card
-                  key={article.id}
-                  className="bg-white/70 backdrop-blur-sm border-slate-200/50 shadow-xl hover:shadow-2xl transition-all duration-300">
-                  <CardContent className="p-8">
-                    <div className="flex flex-col md:flex-row gap-6">
-                      <div className="md:w-48 flex-shrink-0">
-                        <Image
-                          src={article.image || "/placeholder.svg"}
-                          alt={article.title}
-                          width={200}
-                          height={150}
-                          className="w-full h-32 md:h-full object-cover rounded-lg" />
-                      </div>
-                      <div className="flex-1 space-y-4">
-                        <div className="flex items-center gap-4 text-sm text-slate-500">
-                          <span className="flex items-center gap-1">
-                            <Calendar className="h-4 w-4" />
-                            {new Date(article.publishDate).toLocaleDateString()}
-                          </span>
-                          <span className="flex items-center gap-1">
-                            <Clock className="h-4 w-4" />
-                            {article.readTime} min read
-                          </span>
-                          <Badge variant="outline" className="border-slate-300 text-slate-600">
-                            {article.category}
-                          </Badge>
-                        </div>
-                        <h3
-                          className="text-2xl font-semibold text-slate-900 hover:text-blue-600 transition-colors">
-                          <Link href={`/articles/${article.slug}`}>{article.title}</Link>
-                        </h3>
-                        <p className="text-slate-600 line-clamp-2 leading-relaxed">{article.excerpt}</p>
-                        <div className="flex flex-wrap gap-2">
-                          {article.tags.map((tag) => (
-                            <Badge
-                              key={tag}
-                              variant="secondary"
-                              className="bg-slate-100 text-slate-600 text-xs">
-                              {tag}
-                            </Badge>
-                          ))}
-                        </div>
-                        <div className="flex items-center justify-between pt-2">
-                          <div className="flex items-center gap-2">
-                            <div
-                              className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
-                              <User className="h-4 w-4 text-white" />
-                            </div>
-                            <div>
-                              <p className="text-sm font-medium text-slate-700">{article.author}</p>
-                            </div>
-                          </div>
-                          <Link href={`/articles/${article.slug}`}>
-                            <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700">
-                              Read Article
-                              <ArrowRight className="h-4 w-4 ml-1" />
-                            </Button>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            {filteredArticles.length === 0 && (
-              <div className="text-center py-16">
-                <BookOpen className="h-16 w-16 text-slate-400 mx-auto mb-6" />
-                <h3 className="text-xl font-semibold text-slate-700 mb-2">No articles found</h3>
-                <p className="text-slate-500">Try adjusting your search terms or filters</p>
+            {filteredArticles.length === 0 ? (
+              <EmptyState
+                icon={BookOpen}
+                title="No articles found"
+                description="Try adjusting your search terms or filters" />
+            ) : (
+              <div className="space-y-8">
+                {filteredArticles.map((article) => (
+                  <ArticleCard key={article.id} article={article} variant="list" />
+                ))}
               </div>
             )}
           </div>
