@@ -13,11 +13,9 @@ export const products = [
       "Complete 2-person emergency kit with 3-day supply of food, water, and essential survival supplies in a portable backpack",
     inStock: true,
     featured: true,
-    asin: "B000FGZPEA",
+    asin: "B000FJQQVI",
     affiliateLinks: [
-      { retailer: "Amazon", url: "https://amazon.com/dp/B000FGZPEA", price: 79.99 },
-      { retailer: "Walmart", url: "https://walmart.com/ip/Ready-America-70280-Emergency-Kit/16817991", price: 84.99 },
-      { retailer: "Home Depot", url: "https://homedepot.com/p/Ready-America-Emergency-Kit/203468088", price: 82.99 },
+      { retailer: "Amazon", url: "https://amzn.to/3HGRd4r", price: 79.99 }
     ],
     pros: ["Complete 3-day supply", "Portable backpack design", "USCG approved water", "5-year shelf life"],
     cons: ["Limited food variety", "Basic first aid kit", "Heavy when fully loaded"],
@@ -36,11 +34,9 @@ export const products = [
       "15-in-1 multi-tool with needle-nose pliers, wire cutters, fine edge blade, serrated blade, scissors, and more",
     inStock: true,
     featured: true,
-    asin: "B06XPH5L7Z",
+    asin: "B07DD69QN3",
     affiliateLinks: [
-      { retailer: "Amazon", url: "https://amazon.com/dp/B06XPH5L7Z", price: 34.99 },
-      { retailer: "REI", url: "https://rei.com/product/gerber-suspension-nxt", price: 39.95 },
-      { retailer: "Bass Pro", url: "https://basspro.com/gerber-suspension-nxt", price: 36.99 },
+      { retailer: "Amazon", url: "https://www.amazon.com/dp/B07DD69QN3", price: 34.99 }
     ],
     pros: ["15 tools in one", "Durable stainless steel", "Comfortable grip", "Lifetime warranty"],
     cons: ["Heavier than some models", "Tools can be stiff initially"],
@@ -59,11 +55,9 @@ export const products = [
       "Portable solar charger with 10000mAh capacity, IP65 water-resistant rating, and dual USB ports for charging devices",
     inStock: true,
     featured: true,
-    asin: "B08THCNNCS",
+    asin: "B08BRC7SCY",
     affiliateLinks: [
-      { retailer: "Amazon", url: "https://amazon.com/dp/B08THCNNCS", price: 39.99 },
-      { retailer: "Best Buy", url: "https://bestbuy.com/anker-powercore-solar", price: 44.99 },
-      { retailer: "Target", url: "https://target.com/anker-solar-power-bank", price: 42.99 },
+      { retailer: "Amazon", url: "https://www.amazon.com/dp/B08BRC7SCY", price: 39.99 }
     ],
     pros: ["Solar charging capability", "Water resistant IP65", "Fast charging technology", "Compact design"],
     cons: ["Slow solar charging", "Heavy for backpacking"],
@@ -84,9 +78,7 @@ export const products = [
     featured: true,
     asin: "B006QF3TW4",
     affiliateLinks: [
-      { retailer: "Amazon", url: "https://amazon.com/dp/B006QF3TW4", price: 19.95 },
-      { retailer: "REI", url: "https://rei.com/product/lifestraw-personal", price: 19.95 },
-      { retailer: "Dick's", url: "https://dickssportinggoods.com/lifestraw", price: 21.99 },
+      { retailer: "Amazon", url: "https://www.amazon.com/dp/B006QF3TW4", price: 19.95 }
     ],
     pros: ["Filters 1000+ gallons", "No batteries required", "Ultra-lightweight", "Award-winning design"],
     cons: ["Cannot filter viruses", "Requires suction", "Limited to personal use"],
@@ -105,11 +97,9 @@ export const products = [
       "24 servings of freeze-dried meals with 30-year shelf life. Just add hot water for delicious, nutritious meals",
     inStock: true,
     featured: false,
-    asin: "B07FQBZ5X1",
+    asin: "B0BXJKKV9G",
     affiliateLinks: [
-      { retailer: "Amazon", url: "https://amazon.com/dp/B07FQBZ5X1", price: 99.95 },
-      { retailer: "Costco", url: "https://costco.com/mountain-house-bucket", price: 94.99 },
-      { retailer: "REI", url: "https://rei.com/mountain-house-classic-bucket", price: 104.95 },
+      { retailer: "Amazon", url: "https://www.amazon.com/dp/B0BXJKKV9G", price: 99.95 }
     ],
     pros: ["30-year shelf life", "Just add water", "Great taste", "Variety of meals"],
     cons: ["Requires hot water", "High sodium content", "Expensive per serving"],
@@ -129,9 +119,7 @@ export const products = [
     featured: false,
     asin: "B00176T9OY",
     affiliateLinks: [
-      { retailer: "Amazon", url: "https://amazon.com/dp/B00176T9OY", price: 29.99 },
-      { retailer: "Home Depot", url: "https://homedepot.com/midland-weather-radio", price: 32.99 },
-      { retailer: "Lowe's", url: "https://lowes.com/midland-wr120b", price: 31.99 },
+      { retailer: "Amazon", url: "https://www.amazon.com/dp/B00176T9OY", price: 29.99 }
     ],
     pros: ["NOAA weather alerts", "Hand crank power", "Battery backup", "Affordable price"],
     cons: ["Small speaker", "Basic display", "Manual tuning required"],
@@ -151,9 +139,7 @@ export const products = [
     featured: false,
     asin: "B00143JZ08",
     affiliateLinks: [
-      { retailer: "Amazon", url: "https://amazon.com/dp/B00143JZ08", price: 19.99 },
-      { retailer: "Home Depot", url: "https://homedepot.com/streamlight-microstream", price: 22.99 },
-      { retailer: "Lowe's", url: "https://lowes.com/streamlight-66318", price: 21.99 },
+      { retailer: "Amazon", url: "https://www.amazon.com/dp/B00143JZ08", price: 19.99 }
     ],
     pros: ["Ultra-compact size", "Bright 250 lumens", "Durable construction", "Long battery life"],
     cons: ["Single brightness mode", "No clip included", "AAA battery only"],
@@ -173,11 +159,9 @@ export const products = [
     featured: false,
     asin: "B000052YPO",
     affiliateLinks: [
-      { retailer: "Amazon", url: "https://amazon.com/dp/B000052YPO", price: 14.97 },
-      { retailer: "Walmart", url: "https://walmart.com/johnson-johnson-first-aid", price: 13.97 },
-      { retailer: "CVS", url: "https://cvs.com/red-cross-first-aid-kit", price: 16.99 },
+      { retailer: "Amazon", url: "https://www.amazon.com/dp/B000052YPO", price: 14.97 }
     ],
     pros: ["140 pieces included", "Compact storage case", "Emergency guide", "Affordable price"],
     cons: ["Basic supplies only", "No trauma items", "Cheap case quality"],
   },
-]
+];

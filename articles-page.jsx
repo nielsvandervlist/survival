@@ -192,17 +192,16 @@ export default function ArticlesPage() {
           </div>
         </section>
 
-        <div className="mb-12">
+      <div className="grid grid-cols-12 gap-8">
+        <div className="mb-12 col-span-4 flex flex-col gap-8">
           <SearchFilters
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
             sortBy={sortBy}
             onSortChange={setSortBy}
-            sortOptions={sortOptions} />
-        </div>
-
-        <div className="flex flex-col gap-12">
-          <div className="lg:w-80 space-y-8">
+            sortOptions={sortOptions} 
+          />
+            <div className="space-y-8">
             <Card className="bg-white/70 backdrop-blur-sm border-slate-200/50 shadow-xl">
               <CardHeader>
                 <CardTitle className="text-slate-900 flex items-center gap-2">
@@ -249,15 +248,10 @@ export default function ArticlesPage() {
               </CardContent>
             </Card>
           </div>
+        </div>
 
-          {/* Articles Grid */}
+        <div className="flex flex-col gap-12 col-span-8">
           <div className="flex-1">
-            <div className="mb-6 flex justify-between items-center">
-              <p className="text-slate-600">
-                Showing {filteredArticles.length} of {articles.length} articles
-              </p>
-            </div>
-
             {filteredArticles.length === 0 ? (
               <EmptyState
                 icon={BookOpen}
@@ -271,6 +265,7 @@ export default function ArticlesPage() {
               </div>
             )}
           </div>
+        </div>
         </div>
       </div>
       <Footer />

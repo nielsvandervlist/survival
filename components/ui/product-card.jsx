@@ -51,7 +51,7 @@ export function ProductCard({
           )}
         </div>
       </CardHeader>
-      <CardContent className="p-6 flex flex-col flex-1">
+      <CardContent className="px-6 flex flex-col flex-1">
         <div className="space-y-4 flex-1">
           <div className="flex items-center gap-2 text-amber-500">
             {[...Array(5)].map((_, i) => (

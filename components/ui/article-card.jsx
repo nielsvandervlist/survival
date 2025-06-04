@@ -96,7 +96,7 @@ export function ArticleCard({
           )}
         </div>
       </CardHeader>
-      <CardContent className="p-6 flex flex-col flex-1">
+      <CardContent className="px-6 flex flex-col flex-1">
         <div className="space-y-4 flex-1">
           <div className="flex items-center gap-4 text-sm text-slate-500">
             <span className="flex items-center gap-1">

@@ -34,7 +34,7 @@ export function ResourceCard({
     return (
       <Card
         className="bg-white/70 backdrop-blur-sm border-slate-200/50 shadow-lg hover:shadow-xl transition-all duration-300">
-        <CardContent className="p-6">
+        <CardContent className="px-6">
           <div className="flex gap-4">
             <div className="flex-shrink-0">
               <Image
@@ -137,7 +137,7 @@ export function ResourceCard({
           </div>
         </div>
       </CardHeader>
-      <CardContent className="p-6 flex flex-col flex-1">
+      <CardContent className="px-6 flex flex-col flex-1">
         <div className="space-y-4 flex-1">
           <div className="flex items-center gap-2">
             <span className="text-lg">{category?.icon}</span>

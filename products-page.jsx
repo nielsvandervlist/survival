@@ -104,9 +104,59 @@ export default function ProductsPage() {
 
         <div className="flex flex-col lg:flex-row gap-12">
           {/* Sidebar Filters */}
-          <div className="lg:w-80 space-y-8">
-            {/* Categories, Price Range, and Additional Filters would go here */}
-            {/* This would be extracted into separate components as well */}
+          <div className="">
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Filters</h3>
+            <div>
+              <label className="block text-sm">Category</label>
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="mt-1 block w-full border border-gray-300 rounded-md">
+                <option>All Products</option>
+                <option>Category 1</option>
+                <option>Category 2</option>
+                <option>Category 3</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm">Price Range</label>
+              <input
+                type="range"
+                min="0"
+                max="200"
+                value={priceRange[0]}
+                onChange={(e) => setPriceRange([Number(e.target.value), priceRange[1]])}
+                className="mt-1 w-full" />
+              <input
+                type="range"
+                min="0"
+                max="200"
+                value={priceRange[1]}
+                onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
+                className="mt-1 w-full" />
+            </div>
+            <div>
+              <label className="inline-flex items-center">
+                <input
+                  type="checkbox"
+                  checked={showInStockOnly}
+                  onChange={() => setShowInStockOnly(!showInStockOnly)}
+                  className="mr-2" />
+                In Stock Only
+              </label>
+            </div>
+            <div>
+              <label className="inline-flex items-center">
+                <input
+                  type="checkbox"
+                  checked={showSaleOnly}
+                  onChange={() => setShowSaleOnly(!showSaleOnly)}
+                  className="mr-2" />
+                On Sale Only
+              </label>
+            </div>
+          </div>
           </div>
 
           {/* Products Grid */}
